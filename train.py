@@ -19,7 +19,7 @@ img_rows, img_cols = 28, 28
 x_train=[]
 y_train=[]
 
-dos = glob('C:\\Users\\maxim\\Desktop\\autre IA\\label\\*')
+dos = glob('yourPATH\\NumberRecognition\\label\\*')
 for img_path in dos:
     img = cv2.imread(img_path,0)
     img = cv2.resize(img,(img_rows,img_cols))
@@ -33,7 +33,6 @@ x_train = np.array(x_train).astype('float32')
 
 x_train /= 255
 
-# convert class vectors to binary class matrices
 y_train = keras.utils.to_categorical(y_train, num_classes)
 
 model = Sequential()
