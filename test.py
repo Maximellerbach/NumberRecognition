@@ -7,11 +7,11 @@ import h5py
 from glob import glob
 import time
 
-#LOAD AI
-model = load_model('YourPath\\NumberRecognition\\AI.h5')
+#LOAD AI (you have to run train.py before to create the AI)
+model = load_model('YourPATH\\NumberRecognition\\AI.h5')
 
 #CREATING AN ARRAY CONTAINING INPUT IMAGE'S PATH
-dos = glob('YourPath\\NumberRecognition\\image\\*.jpg')
+dos = glob('YourPATH\\NumberRecognition\\image\\*.jpg')
 
 #INITIALIZE THE SIZE OF THE CROPPED IMAGE
 wi = 28
@@ -42,7 +42,7 @@ for img_path in tqdm(dos):
                 img_pred = np.reshape(img2,(1,28,28,1))
                 
                 predicted = np.argmax(model.predict(img_pred))
-                cv2.imwrite('YourPath\\NumberRecognition\\cropped_image\\'+str(predicted)+'_'+str(time.time())+'.png',img2)
+                cv2.imwrite('YourPATH\\NumberRecognition\\cropped_image\\'+str(predicted)+'_'+str(time.time())+'.png',img2)
                 if predicted == 11:
                     fontScale = 1
                     cv2.putText(img, 'M', (x,y+h), font, fontScale, fontColor, lineType)
@@ -52,6 +52,6 @@ for img_path in tqdm(dos):
         except:
             pass
             
-    cv2.imwrite('YourPath\\NumberRecognition\\input_image\\'+(img_path.split('\\')[-1]).split('.')[0]+'_'+'.png',img)
+    cv2.imwrite('YourPATH\\NumberRecognition\\input_image\\'+(img_path.split('\\')[-1]).split('.')[0]+'_'+'.png',img)
 
     
