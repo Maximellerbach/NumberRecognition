@@ -21,6 +21,7 @@ he = 28
 font = cv2.FONT_HERSHEY_SIMPLEX
 fontColor = (255,0,0)
 lineType = 2
+fontScale = 1
 
 
 for img_path in tqdm(dos):
@@ -44,10 +45,8 @@ for img_path in tqdm(dos):
                 predicted = np.argmax(model.predict(img_pred))
                 cv2.imwrite('YourPATH\\NumberRecognition\\cropped_image\\'+str(predicted)+'_'+str(time.time())+'.png',img2)
                 if predicted == 11:
-                    fontScale = 1
                     cv2.putText(img, 'M', (x,y+h), font, fontScale, fontColor, lineType)
                 elif predicted != 10:
-                    fontScale = 1
                     cv2.putText(img, str(predicted), (x,y+h), font, fontScale, fontColor, lineType)
         except:
             pass
