@@ -11,7 +11,7 @@ import time
 model = load_model('YourPATH\\NumberRecognition\\AI.h5')
 
 #CREATING AN ARRAY CONTAINING INPUT IMAGE'S PATH
-dos = glob('YourPATH\\NumberRecognition\\image\\*.jpg')
+dos = glob('YourPATH\\NumberRecognition\\input_image\\*.jpg')
 
 #INITIALIZE THE SIZE OF THE CROPPED IMAGE
 wi = 28
