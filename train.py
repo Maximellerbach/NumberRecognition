@@ -37,21 +37,21 @@ y_train = keras.utils.to_categorical(y_train, num_classes)
 
 model = Sequential()
 
-model.add(Conv2D(256, (4, 4), activation='relu', input_shape=input_shape))
-model.add(Dense(256, activation='relu'))
-MaxPooling2D(pool_size=(8, 8), padding='same')
+model.add(Conv2D(128, (4, 4), activation='relu', input_shape=input_shape))
+model.add(Dense(128, activation='relu'))
+MaxPooling2D(pool_size=(4, 4), padding='same')
 
-model.add(Conv2D(256, (2, 2), activation='relu', input_shape=input_shape))
-model.add(Dense(256, activation='relu'))
+model.add(Conv2D(128, (2, 2), activation='relu', input_shape=input_shape))
+model.add(Dense(128, activation='relu'))
 MaxPooling2D(pool_size=(4, 4), padding='same')
 
 model.add(Dropout(0.1))
 
 model.add(Flatten())
-model.add(Dense(256, activation='relu'))
+model.add(Dense(128, activation='relu'))
 model.add(Dense(num_classes, activation='softmax'))
 
 model.compile(loss=keras.losses.categorical_crossentropy, optimizer=keras.optimizers.Adam(), metrics=['accuracy'])
 model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(x_train, y_train))
 
-model.save('C:\\Users\\maxim\\Desktop\\autre IA\\AI.h5')
+model.save('yourPATH\\NumberRecognition\\AI.h5')
