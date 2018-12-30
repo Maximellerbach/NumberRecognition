@@ -44,9 +44,9 @@ for img_path in tqdm(dos):
                 
                 predicted = np.argmax(model.predict(img_pred))
                 cv2.imwrite('YourPATH\\NumberRecognition\\cropped_image\\'+str(predicted)+'_'+str(time.time())+'.png',img2)
-                if predicted == 11:
+                if predicted == 11: #label 11 is the special character and letter label
                     cv2.putText(img, 'M', (x,y+h), font, fontScale, fontColor, lineType)
-                elif predicted != 10:
+                elif predicted != 10: #label 10 is the "trash" label, all unwanted shapes are supposed to be 10 
                     cv2.putText(img, str(predicted), (x,y+h), font, fontScale, fontColor, lineType)
         except:
             pass
