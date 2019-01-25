@@ -8,10 +8,10 @@ from glob import glob
 import time
 
 #LOAD AI
-model = load_model('C:\\Users\\maxim\\Desktop\\autre IA\\AI.h5')
+model = load_model('autre IA\\AI.h5')
 
 #CREATING AN ARRAY CONTAINING INPUT IMAGE'S PATH
-dos = glob('C:\\Users\\maxim\\Desktop\\autre IA\\image\\*.jpg')
+dos = glob('image\\*.jpg')
 
 #INITIALIZE THE SIZE OF THE CROPPED IMAGE
 wi = 28
@@ -36,10 +36,10 @@ for img_path in tqdm(dos):
         try:
             x, y, w, h = cv2.boundingRect(cont)
             if h*w>20:
-                img2= th[y-4:y+h+4, x-4:x+w+4]
-                img2 = cv2.resize(img2,(wi,he))
+                crop= th[y-4:y+h+4, x-4:x+w+4]
+                crop = cv2.resize(img2,(wi,he))
                 
-                img_pred = np.reshape(img2,(1,wi,he,1))
+                img_pred = np.reshape(crop,(1,wi,he,1))
                 
                 predicted = np.argmax(model.predict(img_pred))
                 cv2.imwrite('C:\\Users\\maxim\\Desktop\\autre IA\\cropped_image\\'+str(predicted)+'_'+str(time.time())+'.png',img2)
@@ -57,7 +57,7 @@ for img_path in tqdm(dos):
         except:
             pass
             
-    cv2.imwrite('C:\\Users\\maxim\\Desktop\\autre IA\\image\\'+(img_path.split('\\')[-1]).split('.')[0]+'_'+'.png',img)
-    cv2.imwrite('C:\\Users\\maxim\\Desktop\\autre IA\\image\\'+(img_path.split('\\')[-1]).split('.')[0]+'_th'+'.png',th)
+    cv2.imwrite('image\\'+(img_path.split('\\')[-1]).split('.')[0]+'_'+'.png',img)
+    cv2.imwrite('image\\'+(img_path.split('\\')[-1]).split('.')[0]+'_th'+'.png',th)
 
     
