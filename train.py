@@ -10,6 +10,7 @@ from glob import glob
 import cv2
 import numpy as np
 
+#settings for training
 batch_size = 128
 num_classes = 12
 epochs = 10
