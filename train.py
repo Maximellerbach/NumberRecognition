@@ -14,17 +14,17 @@ batch_size = 128
 num_classes = 12
 epochs = 10
 
-# input image dimensions
+# image size and input_size
 width, height = 28, 28
 input_shape = (28, 28, 1)
 
 x_train=[]
 y_train=[]
 
-dos = glob('C:\\Users\\maxim\\Desktop\\autre IA\\label\\*')
+dos = glob('label\\*')
 
 for img_path in dos:
-
+    #load image in grayscale
     img = cv2.imread(img_path,0)
     img = cv2.resize(img,(width,height))
     img = np.reshape(img,(input_shape))
@@ -58,4 +58,4 @@ model.summary()
 model.compile(loss=keras.losses.categorical_crossentropy, optimizer=keras.optimizers.Adam(), metrics=['accuracy'])
 model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, verbose=1, validation_data=(x_test, y_test))
 
-model.save('C:\\Users\\maxim\\Desktop\\autre IA\\AI.h5')
+model.save('AI.h5')
